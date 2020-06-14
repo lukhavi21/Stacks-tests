@@ -1,5 +1,5 @@
 #include "stacks.h"
-
+// codigo principal
 int main(void){
 	
 	initSetup();
@@ -7,5 +7,3 @@ int main(void){
 	
 	return 0;
 }
-
-
