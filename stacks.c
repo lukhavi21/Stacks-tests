@@ -32,9 +32,12 @@ int push(int valor,int iStack){
 
 int stack(int nStack){
 	nodo *tope;
-	int buffSize[3] = {0,0,0}; // buffer de numero de discos en cada pila
+	int buffSize[NUM_STACKS]; 	// buffer de numero de discos en cada pila
 	int i;
 	
+	for(i=0;i<NUM_STACKS;i++)	// inicializamos buff
+		buffSize[i] = 0;
+
 	for(i = 0;i<NUM_STACKS;i++)
 		for(tope = stackPointers[i];tope;tope = tope->next) 
 				buffSize[i]++;
@@ -52,35 +55,34 @@ int stack(int nStack){
 
 void showStacks(void){
 	nodo *maxTope = NULL;
-	int nStack;
-	
-	if((nStack = stack(NUM_STACKS))== 1)	maxTope = stackPointers[0];
-	else if(nStack == 2)					maxTope = stackPointers[1];
-	else									maxTope = stackPointers[2];
+	maxTope = stackPointers[stack(NUM_STACKS)-1];
 							
-	nodo *tope1 = stackPointers[0];
-	nodo *tope2 = stackPointers[1];
-	nodo *tope3 = stackPointers[2];
-	
-	//printf("Pila:%d\n",nStack);
+	nodo *spSave[NUM_STACKS];
+	int i;
+
+	for(i=0;i<NUM_STACKS;i++)
+		spSave[i] = stackPointers[i];
 	
 	printf("\n");
 	
 	while(maxTope){
-		
-		if(tope1){
-			printf("\t|%2d|\t",tope1->dato);
-			tope1 = tope1->next;
+		// primera stack
+		if(spSave[0]){
+			printf("\t|%2d|\t",spSave[0]->dato);
+			spSave[0] = spSave[0]->next;
 		}else printf("\t\t");
 	
-		if(tope2){
-			printf("|%2d|\t",tope2->dato);
-			tope2 = tope2->next;
+		// stack intermedias
+		for()
+		if(spSave[1]){
+			printf("|%2d|\t",spSave[1]->dato);
+			spSave[1] = spSave[1]->next;
 		}else printf("\t");
-			
-		if(tope3){
-			printf("|%2d|\n",tope3->dato);
-			tope3 = tope3->next;
+		
+		// ultima stack
+		if(spSave[NUM_STACKS-1]){
+			printf("|%2d|\n",spSave[NUM_STACKS-1]->dato);
+			spSave[NUM_STACKS-1] = spSave[NUM_STACKS-1]->next;
 		}else printf("\n");
 		
 		maxTope = maxTope->next;
