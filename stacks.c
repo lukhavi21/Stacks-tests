@@ -35,7 +35,7 @@ int stack(int nStack){
 	int buffSize[NUM_STACKS]; 	// buffer de numero de discos en cada pila
 	int i;
 	
-	for(i=0;i<NUM_STACKS;i++)	// inicializamos buff
+	for(i=0;i<NUM_STACKS;i++)	// inicializamos buffize todo a 0
 		buffSize[i] = 0;
 
 	for(i = 0;i<NUM_STACKS;i++)
@@ -62,7 +62,7 @@ void showStacks(void){
 
 	for(i=0;i<NUM_STACKS;i++)
 		spSave[i] = stackPointers[i];
-	
+
 	printf("\n");
 	
 	while(maxTope){
@@ -73,12 +73,12 @@ void showStacks(void){
 		}else printf("\t\t");
 	
 		// stack intermedias
-		for()
-		if(spSave[1]){
-			printf("|%2d|\t",spSave[1]->dato);
-			spSave[1] = spSave[1]->next;
-		}else printf("\t");
-		
+		for(i=1;i<NUM_STACKS-1;i++){
+			if(spSave[i]){
+				printf("|%2d|\t",spSave[i]->dato);
+				spSave[i] = spSave[i]->next;
+			}else printf("\t");
+		}
 		// ultima stack
 		if(spSave[NUM_STACKS-1]){
 			printf("|%2d|\n",spSave[NUM_STACKS-1]->dato);
