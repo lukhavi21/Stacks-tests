@@ -99,7 +99,7 @@ int pop(int iStack,int *checker){
 	if(stackPointers[iStack]){
 		int data				=	stackPointers[iStack]->dato;		// pop
 		nodo *stackPointerOld 	= 	stackPointers[iStack];				// nodo a borrar
-		stackPointers[0]		=	stackPointers[iStack]->next;		// retrocede un dato a nuevo tope de pila
+		stackPointers[iStack]		=	stackPointers[iStack]->next;		// retrocede un dato a nuevo tope de pila
 		*checker 				= 	0;
 		free(stackPointerOld);											// libera tope-nodo antiguo
 		return data;
